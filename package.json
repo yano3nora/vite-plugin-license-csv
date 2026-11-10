@@ -1,0 +1,56 @@
+{
+  "name": "vite-plugin-license-csv",
+  "version": "0.1.0",
+  "description": "Vite plugin that emits a CSV of the npm packages actually bundled into the build output (name, version, license, url)",
+  "keywords": [
+    "vite-plugin",
+    "license",
+    "licenses",
+    "csv",
+    "oss",
+    "third-party"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yano3nora/vite-plugin-license-csv.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "prepublishOnly": "run-s test build",
+    "test": "run-s test:*",
+    "test:vitest": "vitest run --passWithNoTests",
+    "test:oxlint": "oxlint",
+    "test:oxfmt": "oxfmt --check src",
+    "test:tsc": "tsc --noEmit",
+    "fix": "run-s fix:*",
+    "fix:oxlint": "oxlint --fix",
+    "fix:oxfmt": "oxfmt src",
+    "dev:test": "vitest watch --passWithNoTests"
+  },
+  "peerDependencies": {
+    "vite": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "npm-run-all2": "^8.0.4",
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.9"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,27 @@
+# mise : node 管理と git-hook 管理のみ利用する
+# https://mise.jdx.dev/
+#
+# - node  : ホストの node を pin。バージョン変更時は package.json engines と手動同期する
+# - hooks : `mise run provision` で pre-commit を .git/hooks へ生成する
+[settings]
+experimental = true
+
+[shell_alias]
+provision = "mise run provision"
+
+[tools]
+node = "24.14.1"
+
+[tasks.pre-commit]
+description = "pre-commit: fix lint, format & run type check, tests"
+run = [
+  "npm run fix",
+  "npm test"
+]
+
+[tasks.provision]
+description = "環境を最初に構成する際のセットアップ"
+run = [
+  "mise generate git-pre-commit --task pre-commit --write",
+  "npm ci",
+]
