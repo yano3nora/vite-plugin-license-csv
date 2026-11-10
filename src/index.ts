@@ -74,7 +74,7 @@ export const resolveUrl = (pkg: PackageJson) =>
 
 /**
  * Walks up to the nearest package.json that has both `name` and `version`.
- * A subpath package.json such as `firebase/app` has a name but no version and
+ * A subpath package.json such as `some-pkg/sub` has a name but no version and
  * no license, so it must resolve to the published package that contains it.
  */
 const findPackage = (moduleId: string, cache: Map<string, PackageJson>) => {

@@ -11,4 +11,5 @@
 - `dependencies` を足さない。`vite` は peer、他は Node 標準で書く
 - 完了前に `npm run fix` → `npm test` を通す
 - `src/index.test.ts` の `licenseCsv` は実際に `vite build` を走らせる。bundle から package を拾う処理を変えたらここで確かめる
-- `npm publish` と tag の push は人間が行う
+- `npm publish` と tag の push は人間が行う。手順は README の Release
+- semver を守る。変更履歴は GitHub Release が commit から自動で作るので、CHANGELOG は書かない
